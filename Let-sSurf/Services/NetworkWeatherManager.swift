@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkWeatherManager {
     
     var onCompletion: ((CurrentWeatherMarin) -> Void)?
     
     func fethCurrentWeather(weather: String) {
-        let urlString = "https://api.worldweatheronline.com/premium/v1/marine.ashx?key=533aceca29124768bfd121940212306&q=\(weather)&format=json&includelocation=no&lang=ru"
+        let urlString = "https://api.worldweatheronline.com/premium/v1/marine.ashx?key=\(apiKey)&q=\(weather)&format=json&includelocation=no&lang=ru"
         guard let url = URL(string: urlString) else {return}
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) {data, response, error in
@@ -36,7 +37,6 @@ class NetworkWeatherManager {
         }
         return nil
     }
-    
     
         
 }
